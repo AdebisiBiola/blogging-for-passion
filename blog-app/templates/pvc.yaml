@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: blog4passion-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  StorageClassNmae: blog4passion-storage
+  resources:
+    requests:
+      storage: 8Gi

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog4passion
+spec:
+  selector:
+    matchLabels:
+      app: blog4passion
+  template:
+    metadata:
+      labels:
+        app: blog4passion
+    spec:
+      containers:
+      - name: blog4passion
+        image: adebisibiola/blog4passion:2
+        ports:
+        - containerPort: 80
+        # volumeMounts:
+      #   - name: blog4passion-storage
+      #     mountPath: /data/storage
+      # volumes:
+      # - name: blog4passion-storage
+      #   persistentVolumeClaim:
+      #     claimName: blog4passion-pvc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog4passion
+spec:
+  selector:
+    app: blog4passion
+  ports:
+  - port: 80
+    targetPort: 8080
+

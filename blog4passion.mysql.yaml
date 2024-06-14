@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog4passion-mysql
+spec:
+  selector:
+    matchLabels:
+      app: blog4passion-mysql
+  template:
+    metadata:
+      labels:
+        app: blog4passion-mysql
+    spec:
+      containers:
+      - name: blog4passion-mysql
+        image: mysql
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: blog4passion-storage
+          mountPath: /data/storage
+        env:
+        - name: MYSQL_ROOT_USERNAME
+          value: root
+        - name: MYSQL_ROOT_PASSWORD
+          value: config1234
+        - name: MYSQL_DATABASE
+          value: blog_admin_db
+      volumes:
+      - name: blog4passion-storage
+        persistentVolumeClaim:
+          claimName: blog4passion-pvc
+      
