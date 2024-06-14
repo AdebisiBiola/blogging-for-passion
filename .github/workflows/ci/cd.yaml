@@ -28,7 +28,7 @@ jobs:
 
         - name: "Push image to Dockerhub"
           run: |
-            docker push adebisibiola/simple-blog:${{ env.APP_VERSION }}
+            docker push adebisibiola/blog4passion:${{ env.APP_VERSION }}
 
         ## This action is to send email notification for the randomly generated app version numbers
         - name: Send email notifications for the latest version of deployment
